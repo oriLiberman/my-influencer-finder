@@ -1,5 +1,5 @@
 const axios = require("axios");
-const API_KEY = "AIzaSyD4QtIqSJN7lFy6H-eT08SmKp4e0Z5_Wtw";
+const API_KEY = "";
 const CATEGORY = "marketing";
 
 // Fetch initial channels list
