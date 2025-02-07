@@ -3,8 +3,9 @@ import { useState } from "react";
 
 export default function Influencers({fetchInfluencers,influencers}) {
   const [category, setCategory] = useState("");
+  const [api,setApi] = useState("");
  function callServerforInfluencers () {
-    fetchInfluencers(category);
+    fetchInfluencers(category,api);
   };
 
 
@@ -16,6 +17,11 @@ export default function Influencers({fetchInfluencers,influencers}) {
         placeholder="Enter influencer category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="api key"
+        onChange={(e) => setApi(e.target.value)}
       />
      <button onClick={callServerforInfluencers}>Search
         Search
