@@ -1,7 +1,18 @@
-1. in the main componnent there is a localhost server just to test.
-2. there is a scrapper components for tiktok and youtube influencers by category - their info stats and more and write the data to a googlesheet file(optional).
-3. function main get the influencers info in an arrays, one array for tiktok and one for youtube - for both you need googleconsole api and service acount json.
-4. you will also need apify api from their website, its nececary to apply the api where is needed in the code in every component. 
-5. for google sheet you will neeed the sheet id also and to enable googlesheet, v4 search youtube data and more in you google console .
-6. the data main returns its 2 arrays and the function works only once there is a get request from the frontend for influencers, might take a minute untill main would finish and get the data.
-7. the data is sent  back as res and you can map and disply them in the web, there is an open react project in frontend with brouser router so you can add simillar componenets easy and not work twice.
+1. The main component runs a local server for testing purposes.
+2. There is a scraper component for TikTok and YouTube influencers by category. This component collects information, stats, and more, and optionally writes the data to a Google Sheets file.
+3. The main function retrieves influencer data and stores it in two separate arrays: one for TikTok and one for YouTube. Both platforms require Google Console API and service account JSON files.
+4. You will also need to integrate the Apify API from their website where necessary in the code. 
+5. For Google Sheets, you will need the sheet ID and to enable Google Sheets API v4 and YouTube data API in your Google Console.
+6. The main function will return two arrays of data. It will only run after a GET request from the frontend for influencers. This process may take a minute to finish and gather all the data.
+7. The data will be sent back as a response, which you can then map and display on the frontend. The React project uses BrowserRouter, making it easy to add similar components without duplication.
+8. Run the Backend:
+* In a different terminal, navigate to the backend directory.
+* Run node main to start the backend server. Make sure to install the necessary modules with npm install if you haven't done so already.
+9. Insert APIs and Run the Frontend:
+* Ensure that you have the necessary API keys (Apify, Google Sheets, YouTube API).
+* Install the required dependencies for the frontend (npm install).
+* To run the frontend, execute npm run dev in the terminal. This will start the React app.
+10. Start the Server:
+* Once the backend server is running with node main, it will listen for GET requests from the frontend.
+11. Enjoy:
+* Once everything is running, the frontend will make a GET request to the backend, which fetches TikTok and YouTube influencer data. The backend processes this and returns the data in two arrays (one for TikTok and one for YouTube).The data will be sent back to the frontend, where you can map and display it easily. 
