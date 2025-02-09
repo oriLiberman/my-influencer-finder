@@ -3,17 +3,19 @@ import { useState } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
-  const [influencers, setInfluencers] = useState([]);
-  async function fetchInfluencers(category, apiKey) {
-    if (!category.trim() || !apiKey.trim()) {console.log("missing value")
+  const [youtubeInfluencers, setYoutubeInfluencers] = useState([]);
+  const [tiktokInfluencers, setTiktokInfluencers] = useState([]);
+  async function fetchInfluencers(category) {
+    if (!category.trim()) {console.log("missing value")
       return
     }
   
     try {
       const response = await axios.get(
-        `http://localhost:5000/getInfluencers?category=${category}&apiKey=${apiKey}`
+        `http://localhost:3000/getInfluencers?category=${category}`
       );
-      setInfluencers(response.data);
+      setYoutubeInfluencers(response.data.youtubeInfluencers);
+      setTiktokInfluencers(response.data.tiktokInfluencers);
     } catch (error) {
       console.error("Error fetching influencers:", error);
     } 
@@ -26,7 +28,13 @@ function App() {
         <Routes>
         <Route 
             path="/" 
-            element={<Influencers influencers={influencers} fetchInfluencers={fetchInfluencers} />} 
+            element={
+              <Influencers
+                youtubeInfluencers={youtubeInfluencers}
+                tiktokInfluencers={tiktokInfluencers}
+                fetchInfluencers={fetchInfluencers}
+              />
+            }
           />
         </Routes>
       </div>

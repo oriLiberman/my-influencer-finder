@@ -39,6 +39,7 @@ async function searchTikTokUsers(searchCategory) {
         console.error("❌ Error:", error.response ? error.response.data : error.message);
     }
 }
+searchTikTokUsers("marketing")
 module.exports = { searchTikTokUsers };
 
 

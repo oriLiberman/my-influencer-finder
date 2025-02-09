@@ -15,6 +15,7 @@ app.get("/getInfluencers", async (req, res) => {
     const data = await main(category)
     res.json(data);
   } catch (error) {
+    console.error("Error fetching influencers:", error);
     res.status(500).json({ error: "Failed to fetch influencers data" });
   }
 });
@@ -25,10 +26,11 @@ async function main(category) {
     youtubeInfluencers = await getInfluencersChannels(category);
     tiktokInfluencers = await searchTikTokUsers(category) 
     // await writeDataToSheets(data);
+    return { youtubeInfluencers, tiktokInfluencers };
   } catch (error) {
     console.error('Error in main function:', error);
+    return ("error in main function")
   }
-  return { youtubeInfluencers, tiktokInfluencers };
 }
 
 

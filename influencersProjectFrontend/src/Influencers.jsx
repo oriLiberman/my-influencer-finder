@@ -1,13 +1,16 @@
 import { useState } from "react";
 
 
-export default function Influencers({fetchInfluencers,influencers}) {
+export default function Influencers({fetchInfluencers,youtubeInfluencers,tiktokInfluencers}) {
   const [category, setCategory] = useState("");
-  const [api,setApi] = useState("");
- function callServerforInfluencers () {
-    fetchInfluencers(category,api);
-  };
-
+  const [isyoutube,setIsyoutube] = useState(true);
+ 
+function choosingSortingcategory(ev){
+  if (ev.target.value=="youtube"){
+    setIsyoutube (true)
+  }
+  else {setIsyoutube (false)}
+}
 
   return (
     <div>
@@ -18,17 +21,20 @@ export default function Influencers({fetchInfluencers,influencers}) {
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="api key"
-        onChange={(e) => setApi(e.target.value)}
-      />
-     <button onClick={callServerforInfluencers}>Search
-        Search
-      </button>
+     
+     <button onClick={() => fetchInfluencers(category)}>Search</button>
+    
 
       <div>
-        {influencers.map((influencer, index) => (
+        <label>Select Platform:</label>
+      <select
+        value={category}
+        onChange={choosingSortingcategory}
+      >
+        <option value="youtube">YouTube</option>
+        <option value="tiktok">TikTok</option>
+      </select>
+      {isyoutube?youtubeInfluencers.map((influencer, index) => (
           <div key={index}>
             <h2>{influencer.name}</h2>
             <p>{influencer.channelName}</p>
@@ -41,7 +47,23 @@ export default function Influencers({fetchInfluencers,influencers}) {
               Most Viewed Video
             </a>
           </div>
-        ))}
+        )):tiktokInfluencers.map((influencer, index) => (
+          <div key={index}>
+            <h2>name: {influencer.name}</h2>
+            <p>ProfileUrl: {influencer.profileUrl}</p>
+            <p>Nickname: {influencer.nickName}</p>
+            <p>Bio: {influencer.bioLink}</p>
+            <p>AvatarUrl: {influencer.originalAvatarUrl}</p>
+            <p>Avatar: {influencer.avatar}</p>
+            <p>Region: {influencer.region}</p>
+            <p>Following: {influencer.following}</p>
+            <p>Friends: {influencer.friends}</p>
+            <p>Heart: {influencer.heart}</p>
+            <p>Videos: {influencer.video}</p>
+            <p>Fans: {influencer.fans}</p>
+          </div>
+        )) }
+        
       </div>
     </div>
   );
