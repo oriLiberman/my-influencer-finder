@@ -1,9 +1,9 @@
 const axios = require("axios");
 const API_KEY = "";
-category = "marketing"
+
 
 // Fetch initial channels list
-async function getInfluencersChannels() {
+async function getInfluencersChannels(category) {
   const searchUrl = "https://www.googleapis.com/youtube/v3/search";
   
   try {
